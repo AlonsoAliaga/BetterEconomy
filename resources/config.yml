@@ -1,0 +1,163 @@
+#     ___      _   _           ___
+#      | _ ) ___| |_| |_ ___ _ _| __|__ ___ _ _  ___ _ __ _  _
+#      | _ \/ -_)  _|  _/ -_) '_| _|/ _/ _ \ ' \/ _ \ '  \ || |
+#      |___/\___|\__|\__\___|_| |___\__\___/_||_\___/_|_|_\_, |
+#                                                         |__/
+#                           by AlonsoAliaga
+#          https://www.spigotmc.org/resources/authors/281176/
+#
+
+Messages:
+  No-permission: "&cYou don't have permission to do this."
+  Reloaded: "&aSome messages and options have been reloaded. Other may require a restart!"
+  Invalid-player: "&cPlayer is not online!"
+  Illegal-money: "&cThis money seems to be illegal. Destroy it immediately!"
+  Invalid-money: "&cThis money has already expired. Contact an administrator if think this is an error!"
+  Help:
+    Admin:
+    - "&2 /bettereconomy main <player> &f- &aOpen main menu for player"
+    - "&2 /bettereconomy deposit <player> &f- &aOpen deposit menu for player"
+    - "&2 /bettereconomy withdraw <player> &f- &aOpen withdraw menu for player"
+    - "&2 /bettereconomy reload &f- &aReload configuration (Restart recommended)"
+    User:
+    - "&2 /bettereconomy main &f- &aOpen main menu"
+    - "&2 /bettereconomy deposit &f- &aOpen deposit menu"
+    - "&2 /bettereconomy withdraw &f- &aOpen withdraw menu"
+  Main:
+    Title: "&8Coins menu"
+    Opened-target: "&6You opened main GUI for {TARGET}."
+  Deposit:
+    Title: "&8Deposit coins"
+    Opened-target: "&6You opened deposit GUI for {TARGET}."
+    Success: "&a${TOTAL_VALUE} added to your account."
+    Error: "&cSomething went wrong, you received your items back. If problem persists, contact an administrator."
+    Error-extra: "&cSomething went wrong, you received your items back but some were thrown in the floor. If problem persists, contact an administrator."
+  Withdraw:
+    Title: "&8Withdraw coins"
+    Opened-target: "&6You opened withdraw GUI for {TARGET}."
+    Not-funds: "&cNot enough funds to withdraw that amount!"
+    Nothing-to-withdraw: "&cYou must select what to withdraw first!"
+    Transaction-error: "&cThere was an error with transaction! If problem persists contact an administrator."
+    Success: "&aYou withdrew ${AMOUNT} in money items."
+    Success-extra: "&aYou withdrew ${AMOUNT} in money items. Some of them were thrown in the floor!"
+
+Options:
+  Money:
+    #This is the Unique Id for ALL MONEY. If you modify this, all existing money in the server will not be
+    #recognized as money after change is applied. You should change this only in 2 cases.
+    #1) On setup (first time you install the plugin) to use a custom string.
+    #2) If you had a serious dupe issue with the plugin OR ANY OTHER PLUGIN and you want to disable existing money.
+    UUID: "e1c1a194-7e86-414f-86bb-42d82a21cfb8"
+    #If enabled, plugin will prevent interaction with money items.
+    #It means that if it's a usable item like eye of ender it won't be used if you right click it.
+    #If item is a placeable block, players won't be able to place item on the ground.
+    Prevent-interaction: true
+  Main:
+    Rows: 3
+    Fill-empty:
+      Enabled: true
+      #Color for stained glass pane.
+      Color: BLACK
+      #Custom model data is supported for 1.14+
+      #Change just in case you want to use it with a texture pack.
+      Custom-model-data: 0
+  Deposit:
+    Fill-empty:
+      #Color for stained glass pane.
+      Color: BLACK
+      #Custom model data is supported for 1.14+
+      #Change just in case you want to use it with a texture pack.
+      Custom-model-data: 0
+  Withdraw:
+    Rows: 3
+    Fill-empty:
+      Enabled: true
+      #Color for stained glass pane.
+      Color: BLACK
+      #Custom model data is supported for 1.14+
+      #Change just in case you want to use it with a texture pack.
+      Custom-model-data: 0
+
+Items:
+  Main-gui:
+    Deposit-gold:
+      #Supports CUSTOM_HEAD for custom heads. Texture is required.
+      Material: GOLD_BLOCK
+      #Texture is required if material is CUSTOM_HEAD
+      Texture: "ewogICJ0aW1lc3RhbXAiIDogMTU5NDQ0NjkyMDI5NiwKICAicHJvZmlsZUlkIiA6ICJlMWMxYTE5NDdlODY0MTRmODZiYjQyZDgyYTIxY2ZiOCIsCiAgInByb2ZpbGVOYW1lIiA6ICJBbG9uc29BbGlhZ2EiLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTY4YWE3NGNjODg1NzgwNjBkMGZlM2JkOTA4YjM0ZjY5ZjEyZTA3ZjFmODljNWRkYzE1ZTZiZjYwZjA0Y2NjNiIKICAgIH0KICB9Cn0="
+      Slot: 11
+      #PlaceholderAPI supported
+      Displayname: "&eDeposit coins"
+      #PlaceholderAPI supported
+      Lore: []
+    Withdraw-gold:
+      #Supports CUSTOM_HEAD for custom heads. Texture is required.
+      Material: CUSTOM_HEAD
+      Texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmNlYjU0MDEwNGU3YmJmM2QxM2YxNTI1YWNiNzEwZTNhZDM2NWQwY2IxMjkxYWQxZjc0OGY2MDJiNzdkMyJ9fX0="
+      Slot: 15
+      #PlaceholderAPI supported
+      Displayname: "&eWithdraw coins"
+      #PlaceholderAPI supported
+      Lore: []
+  Withdraw-gui:
+    Withdraw-gold:
+      #Supports CUSTOM_HEAD for custom heads. Texture is required.
+      Material: CUSTOM_HEAD
+      Texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmNlYjU0MDEwNGU3YmJmM2QxM2YxNTI1YWNiNzEwZTNhZDM2NWQwY2IxMjkxYWQxZjc0OGY2MDJiNzdkMyJ9fX0="
+      Slot: 22
+      Enough:
+        #PlaceholderAPI supported
+        Displayname: "&eCoins to withdraw&7: &6${TOTAL_AMOUNT}"
+        #PlaceholderAPI supported
+        Lore:
+        - "&eBalance&7: &a${BALANCE}"
+        - "&r "
+        - "&bLeft click&e to increase 1."
+        - "&bRight click&e to decrease 1."
+        - "&bShift-left click&e to set to 64."
+        - "&bShift-right click&e to set to 0."
+        - "&bMiddle click&e to set halve amount."
+      Not-enough:
+        #PlaceholderAPI supported
+        Displayname: "&eCoins to withdraw&7: &c${TOTAL_AMOUNT}"
+        #PlaceholderAPI supported
+        Lore:
+        - "&eBalance&7: &a${BALANCE}"
+        - "&cNot enough funds!"
+        - "&r "
+        - "&bLeft click&e to increase 1."
+        - "&bRight click&e to decrease 1."
+        - "&bShift-left click&e to set to 64."
+        - "&bShift-right click&e to set to 0."
+        - "&bMiddle click&e to set halve amount."
+    Money-item:
+      Lore:
+      - "&eValue&7: &a${VALUE}"
+      - "&r "
+      - "&7Current amount&7: &6{AMOUNT}"
+      - "&7Total value&7: &a${TOTAL_VALUE}"
+  Deposit-gui:
+    Deposit-gold:
+      #Supports CUSTOM_HEAD for custom heads. Texture is required.
+      Material: CUSTOM_HEAD
+      Texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmM0ODJlM2I1YzdkNmZiNmIwMDFkZTBlM2JiZmEwOWQyODE3YTY5OGNhYTZlMzNlYjI3NmFlYTA4MTA0NDFmNiJ9fX0="
+      Slot: 22
+      #PlaceholderAPI supported
+      Displayname: "&eConfirm deposit&7: &6${TOTAL_VALUE}"
+      #PlaceholderAPI supported
+      Lore: []
+
+Permissions:
+  Admin: "bettereconomy.admin"
+
+Updates:
+  #Auto update configuration? Enabling will delete comments.
+  Auto-update-configuration: true
+  #Check for updates? Recommended to keep it enabled.
+  Check-updates: true
+  #Notify updates when player with permission joins the server?
+  Notify-updates: true
+  #Permission required to receive update message.
+  Permission: "bettereconomy.update"
+  #Message to send when update is found.
+  Message: "&2[BetterEconomy] &eA new update has been found! You are using version {CURRENT}. Download version {NEW} here &c{LINK}"
