@@ -2,9 +2,9 @@
 
 # BetterEconomy
 Let your players have their money in their hands.\
-All ranks are configurable!\
+All money items are configurable!\
 \
-**This plugin does NOT include a quest system.**
+**This plugin is NOT an economy plugin. You MUST HAVE an economy plugin.**
 ## Resources
 - [Spigot resource](https://www.spigotmc.org/resources/X/)
 - [Issue tracker](https://github.com/AlonsoAliaga/BetterEconomy/issues)
