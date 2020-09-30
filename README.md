@@ -6,7 +6,7 @@ All money items are configurable!\
 \
 **This plugin is NOT an economy plugin. You MUST HAVE an economy plugin.**
 ## Resources
-- [Spigot resource](https://www.spigotmc.org/resources/X/)
+- [Spigot resource](https://www.spigotmc.org/resources/84353/)
 - [Issue tracker](https://github.com/AlonsoAliaga/BetterEconomy/issues)
 - [Donate](https://paypal.me/AlonsoAliaga)
 - [bStats](https://bstats.org/plugin/bukkit/BetterEconomy)
