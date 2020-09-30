@@ -1,4 +1,4 @@
-![Logo](IMAGE)
+![Logo](https://imgur.com/5AuWioo.png)
 
 # BetterEconomy
 Let your players have their money in their hands.\
