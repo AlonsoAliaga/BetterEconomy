@@ -1,18 +1,19 @@
-#     ___      _   _           ___
-#      | _ ) ___| |_| |_ ___ _ _| __|__ ___ _ _  ___ _ __ _  _
-#      | _ \/ -_)  _|  _/ -_) '_| _|/ _/ _ \ ' \/ _ \ '  \ || |
-#      |___/\___|\__|\__\___|_| |___\__\___/_||_\___/_|_|_\_, |
-#                                                         |__/
-#                           by AlonsoAliaga
-#          https://www.spigotmc.org/resources/authors/281176/
+#              ___      _   _           ___                                         Our plugins: https://alonsoaliaga.com/plugins
+#             | _ ) ___| |_| |_ ___ _ _| __|__ ___ _ _  ___ _ __ _  _               Support server: https://alonsoaliaga.com/discord
+#             | _ \/ -_)  _|  _/ -_) '_| _|/ _/ _ \ ' \/ _ \ '  \ || |              Youtube: https://alonsoaliaga.com/play
+#             |___/\___|\__|\__\___|_| |___\__\___/_||_\___/_|_|_\_, |              Test server: plugins.alonsoaliaga.com
+#                                               by AlonsoAliaga  |__/               Twitch: https://alonsoaliaga.com/twitch
+#              Considering donating? https://alonsoaliaga.com/donate                Thanks for using my plugin! <3
 #
-
+# CONFIG VERSION 1.4-BETA
 Messages:
   No-permission: "&cYou don't have permission to do this."
   Reloaded: "&aSome messages and options have been reloaded. Other may require a restart!"
   Invalid-player: "&cPlayer is not online!"
   Illegal-money: "&cThis money seems to be illegal. Destroy it immediately!"
   Invalid-money: "&cThis money has already expired. Contact an administrator if think this is an error!"
+  Money-value: "&eThe money you have in hands worth &a${VALUE}&7 (1 item)&e."
+  Money-value-more: "&eThe money you have in hands worth &a${VALUE}&e each item with a total of &a${TOTAL}&7 ({AMOUNT} items)&e."
   Help:
     Admin:
     - "&2 /bettereconomy main <player> &f- &aOpen main menu for player"
@@ -24,15 +25,20 @@ Messages:
     - "&2 /bettereconomy deposit &f- &aOpen deposit menu"
     - "&2 /bettereconomy withdraw &f- &aOpen withdraw menu"
   Main:
+    No-permission: "&cYou don't have permission to open main menu."
     Title: "&8Coins menu"
     Opened-target: "&6You opened main GUI for {TARGET}."
   Deposit:
+    No-permission: "&cYou don't have permission to open deposit gui."
+    No-permission-command: "&cYou don't have permission to open deposit gui with command."
     Title: "&8Deposit coins"
     Opened-target: "&6You opened deposit GUI for {TARGET}."
     Success: "&a${TOTAL_VALUE} added to your account."
     Error: "&cSomething went wrong, you received your items back. If problem persists, contact an administrator."
     Error-extra: "&cSomething went wrong, you received your items back but some were thrown in the floor. If problem persists, contact an administrator."
   Withdraw:
+    No-permission: "&cYou don't have permission to open withdraw gui."
+    No-permission-command: "&cYou don't have permission to open withdraw gui with command."
     Title: "&8Withdraw coins"
     Opened-target: "&6You opened withdraw GUI for {TARGET}."
     Not-funds: "&cNot enough funds to withdraw that amount!"
@@ -42,18 +48,32 @@ Messages:
     Success-extra: "&aYou withdrew ${AMOUNT} in money items. Some of them were thrown in the floor!"
 
 Options:
+  #Debug mode for certain messages. Enable only if developer asks you to do it.
+  Debug-mode: false
+  #To apply changes for aliases you must RESTART the server.
+  #Plugman or similar plugins are NOT and will NEVER be supported.
+  #Use /reload or restart your server.
+  Aliases:
+  - "beconomy"
   Money:
     #This is the Unique Id for ALL MONEY. If you modify this, all existing money in the server will not be
     #recognized as money after change is applied. You should change this only in 2 cases.
     #1) On setup (first time you install the plugin) to use a custom string.
     #2) If you had a serious dupe issue with the plugin OR ANY OTHER PLUGIN and you want to disable existing money.
+    #You can use this tool to create a new random uuid https://alonsoaliaga.com/RandomUUID
+    #WARNING! CHANGING THIS WILL MAKE ALREADY CREATED MONEY USELESS. ONLY CHANGE THIS IN EMERGENCIES.
     UUID: "e1c1a194-7e86-414f-86bb-42d82a21cfb8"
     #If enabled, plugin will prevent interaction with money items.
     #It means that if it's a usable item like eye of ender it won't be used if you right click it.
     #If item is a placeable block, players won't be able to place item on the ground.
     Prevent-interaction: true
+    #This option is just to ignore uuid check in case you "have issues" with some money.
+    #I highly recommend you to leave this false.
+    Ignore-money-uuid: false
   Main:
     Rows: 3
+    Sounds:
+      Open: "CHEST_OPEN"
     Fill-empty:
       Enabled: true
       #Color for stained glass pane.
@@ -62,6 +82,8 @@ Options:
       #Change just in case you want to use it with a texture pack.
       Custom-model-data: 0
   Deposit:
+    Sounds:
+      Open: "CHEST_OPEN"
     Fill-empty:
       #Color for stained glass pane.
       Color: BLACK
@@ -70,6 +92,9 @@ Options:
       Custom-model-data: 0
   Withdraw:
     Rows: 3
+    Sounds:
+      Open: "CHEST_OPEN"
+      Success: "EXP_ORB"
     Fill-empty:
       Enabled: true
       #Color for stained glass pane.
@@ -77,6 +102,21 @@ Options:
       #Custom model data is supported for 1.14+
       #Change just in case you want to use it with a texture pack.
       Custom-model-data: 0
+
+Drops:
+  Entities:
+    #Enabling this will make mobs drop money items. (They MUST BE LISTED ON drops.yml)
+    Enabled: true
+    #If enabled. Plugin will drop the item directly on entity location.
+    #If disabled (RECOMMENDED). Plugin will add the item to the items to be dropped which can be modified by other plugins.
+    Drop-item: false
+  WorldGuard:
+    Warning:
+    - "Default flag:"
+    - " This is the default behavior if the flag is not specified BUT you are inside in a WorldGuard region."
+    - "  true - Entities drop money items."
+    - "  false - Entities don't drop money items."
+    Default-flag-drop: false
 
 Items:
   Main-gui:
@@ -131,6 +171,9 @@ Items:
         - "&bShift-right click&e to set to 0."
         - "&bMiddle click&e to set halve amount."
     Money-item:
+      #If disabled. All items will use the lore specified in their sections in money.yml under the value "Lore-withdraw".
+      #If enabled. All money items in withdraw menu will have the following lore.
+      Global-lore: false
       Lore:
       - "&eValue&7: &a${VALUE}"
       - "&r "
@@ -148,6 +191,16 @@ Items:
       Lore: []
 
 Permissions:
+  #Permission to open main menu.
+  Main-menu: "none"
+  #Permission to open withdraw gui from main menu.
+  Withdraw: "none"
+  #Permission to open withdraw gui with the command.
+  Withdraw-command: "none"
+  #Permission to open deposit gui from main menu.
+  Deposit: "none"
+  #Permission to open deposit gui with the command.
+  Deposit-command: "none"
   Admin: "bettereconomy.admin"
 
 Updates:
