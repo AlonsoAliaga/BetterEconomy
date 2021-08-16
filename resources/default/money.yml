@@ -1,3 +1,5 @@
+#CONFIG VERSION 1.4-BETA
+#
 #DO NOT EVER USE THE SAME IDENTIFIER FOR DIFFERENT MONEY.
 #Follow format to create new money items. If you have issues, join our discord server.
 Money:
@@ -12,6 +14,11 @@ Money:
     Displayname: "&6Coin"
     Lore:
     - "&eValue: &a${VALUE}"
+    Lore-withdraw:
+    - "&eValue&7: &a${VALUE}"
+    - "&r "
+    - "&7Current amount&7: &6{AMOUNT}"
+    - "&7Total value&7: &a${TOTAL_VALUE}"
   bag-of-coins:
     Value: 1000
     Slot: 12
@@ -21,6 +28,11 @@ Money:
     Displayname: "&6Bag of coins"
     Lore:
     - "&eValue: &a${VALUE}"
+    Lore-withdraw:
+    - "&eValue&7: &a${VALUE}"
+    - "&r "
+    - "&7Current amount&7: &6{AMOUNT}"
+    - "&7Total value&7: &a${TOTAL_VALUE}"
   pot-of-coins:
     Value: 10000
     Slot: 14
@@ -30,6 +42,11 @@ Money:
     Displayname: "&6Pot of coins"
     Lore:
     - "&eValue: &a${VALUE}"
+    Lore-withdraw:
+    - "&eValue&7: &a${VALUE}"
+    - "&r "
+    - "&7Current amount&7: &6{AMOUNT}"
+    - "&7Total value&7: &a${TOTAL_VALUE}"
   chest-of-coins:
     Value: 100000
     Slot: 16
@@ -39,3 +56,8 @@ Money:
     Displayname: "&6Chest of coins"
     Lore:
     - "&eValue: &a${VALUE}"
+    Lore-withdraw:
+    - "&eValue&7: &a${VALUE}"
+    - "&r "
+    - "&7Current amount&7: &6{AMOUNT}"
+    - "&7Total value&7: &a${TOTAL_VALUE}"
