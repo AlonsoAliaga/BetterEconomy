@@ -1,0 +1,121 @@
+#CONFIG VERSION 1.4-BETA
+#
+#In this section you will find all entities list for you to add/remove money item drops.
+Entities:
+  #This is the entity type to be checked.
+  #Find full list of entity types here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html
+  #Remember that some of them might not be available in older versions.
+  #IMPORTANT: MAKE SURE YOU ADD THE ENTITIES WITH METADATA FIRST.
+  ZOMBIE|ZOMBIE_VILLAGER:
+    #This is just a identifier, use any word(s).
+    zombie-with-metadata:
+      #Should it require being killed by a player? Default false.
+      Requires-killer: true
+      #Use this in case a mob has a known metadata.
+      #Useful if any plugin you use adds metadata to entities.
+      Metadata: "custom-metadata-for-zombie-king"
+      #Money identifier of item dropped. (Check "Money" section at the end of this file)
+      Money: "small-gold-coin"
+      #Chances in percentage. Minimum 0, maximum 100.
+      Chance: 70
+    normal:
+      Requires-killer: true
+      Money: "small-bronze-coin"
+      Chance: 50
+  SKELETON|WITHER_SKELETON:
+    skeleton-with-metadata:
+      Requires-killer: true
+      Metadata: "custom-metadata-for-skeleton-king"
+      Money: "gold-gem"
+      Chance: 80
+    normal:
+      Requires-killer: true
+      Money: "small-gold-coin"
+      Chance: 70
+  PIGLIN|PIGLIN_BRUTE|ZOMBIFIED_PIGLIN:
+    skeleton-with-metadata:
+      Requires-killer: true
+      Metadata: "custom-metadata-for-piglin-king"
+      Money: "gold-ingots"
+      Chance: 80
+    normal:
+      Requires-killer: true
+      Money: "gold-gem"
+      Chance: 50
+  WITCH:
+    witch-with-metadata:
+      Requires-killer: true
+      Metadata: "custom-metadata-for-witch-king"
+      Money: "gold-ingots"
+      Chance: 90
+    normal:
+      Requires-killer: true
+      Money: "small-silver-coin"
+      Chance: 80
+
+#This is a section for all metadata if entity type is not specified.
+Metadatas:
+  #Specify metadata here as identifier.
+  metadata-of-epic-mob:
+    Requires-killer: true
+    Money: "gold-ingots"
+    Chance: 50
+  metadata-of-legendary-mob:
+    Requires-killer: true
+    Money: "small-chest-of-gold"
+    Chance: 90
+
+#This money is ONLY USED for drops.
+#It can be deposited, but it won't be available for withdraw.       
+#ONLY FOR DROPS.
+#USE LOWERCASE FOR IDENTIFIERS!
+Money:
+  #Select identifiers.
+  small-bronze-coin:
+    Material: CUSTOM_HEAD
+    Texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDJlZWM1YzVkNTAzMDJmZjEwZDBiZGI2MmQ3OWU2N2EwYWIxMTAxNjk2YWUyN2VmOWQ4MmIzNzk0M2MyYTY1YyJ9fX0="
+    Value: 10
+    Custom-model-data: 0
+    Displayname: "&eSmall bronze coin"
+    Lore:
+    - "&eValue: &a${VALUE}"
+  small-silver-coin:
+    Material: CUSTOM_HEAD
+    Texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTM0YjI3YmZjYzhmOWI5NjQ1OTRiNjE4YjExNDZhZjY5ZGUyNzhjZTVlMmUzMDEyY2I0NzFhOWEzY2YzODcxIn19fQ=="
+    Value: 20
+    Custom-model-data: 0
+    Displayname: "&7Small silver coin"
+    Lore:
+    - "&eValue: &a${VALUE}"
+  small-gold-coin:
+    Material: CUSTOM_HEAD
+    Texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjBhN2I5NGM0ZTU4MWI2OTkxNTlkNDg4NDZlYzA5MTM5MjUwNjIzN2M4OWE5N2M5MzI0OGEwZDhhYmM5MTZkNSJ9fX0="
+    Value: 50
+    Custom-model-data: 0
+    Displayname: "&6Small gold coin"
+    Lore:
+    - "&eValue: &a${VALUE}"
+  gold-gem:
+    Material: CUSTOM_HEAD
+    Texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzM5MGM3MWNjOTQ3YWFiYzA1NzU4ZjNjNDk5NGEzMWZiNTgyMWZkNTE2ZjExYjBkOWUxOWU5YzQ3MWE2NDZmNyJ9fX0="
+    Value: 100
+    Custom-model-data: 0
+    Displayname: "&6Gold gem"
+    Lore:
+    - "&eValue: &a${VALUE}"
+  gold-ingots:
+    Material: CUSTOM_HEAD
+    Texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODgxNjYwNjI2MDc3OWIyM2VkMTVmODdjNTZjOTMyMjQwZGI3NDVmODZmNjgzZDFmNGRlYjgzYTRhMTI1ZmE3YiJ9fX0="
+    Value: 1000
+    Custom-model-data: 0
+    Displayname: "&6Gold ingots"
+    Lore:
+    - "&eValue: &a${VALUE}"
+  small-chest-of-gold:
+    Material: CUSTOM_HEAD
+    Texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjA4NmE5NTBkMGEzMDNmNDhhYWIzYTVmMmY2YTQwMzNlODBiYWZjYWY3Y2I1YmRhMTM5N2I4M2U1MjlmNjNiNSJ9fX0="
+    Value: 2000
+    Custom-model-data: 0
+    Displayname: "&6Small chest of gold"
+    Lore:
+    - "&eValue: &a${VALUE}"
