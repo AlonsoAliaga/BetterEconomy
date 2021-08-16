@@ -1,0 +1,176 @@
+#               ___      _   _           ___                                         Our plugins: https://alonsoaliaga.com/plugins
+#              | _ ) ___| |_| |_ ___ _ _| __|__ ___ _ _  ___ _ __ _  _               Support server: https://alonsoaliaga.com/discord
+#              | _ \/ -_)  _|  _/ -_) '_| _|/ _/ _ \ ' \/ _ \ '  \ || |              Youtube: https://alonsoaliaga.com/play
+#              |___/\___|\__|\__\___|_| |___\__\___/_||_\___/_|_|_\_, |              Test server: plugins.alonsoaliaga.com
+#                                                by AlonsoAliaga  |__/               Twitch: https://alonsoaliaga.com/twitch
+#               Considering donating? https://alonsoaliaga.com/donate                Thanks for using my plugin! <3
+#
+#                         Traducción enviada por FranMC23
+#             Esta traducción fue hecha por un miembro de la comunidad.
+Messages:
+  No-permission: '&cNo tienes permiso para hacer esto.'
+  Reloaded: '&aAlgunos mensajes y opciones fueron traducidas, otras necesitan un reinicio!'
+  Invalid-player: '&cJugador no encontrado!'
+  Illegal-money: '&cEste dinero debe ser ilegal, destruyelo de inmediato!'
+  Invalid-money: '&cEste dinero ya está expirado, contacta a un administrador si piensas
+    que es nu error!'
+  Money-value: '&eEl dinero que tienes en tu mano vale por &a${VALUE}&7 (1 item)&e.'
+  Money-value-more: '&eEl dinero que tienes en la mano vale por &a${VALUE}&e cada item con un
+    un total de &a${TOTAL}&7 ({AMOUNT} items)&e.'
+  Help:
+    Admin:
+    - '&2 /bettereconomy main <player> &f- &aAbrir el menú para los jugadores'
+    - '&2 /bettereconomy deposit <player> &f- &aAbre el menú de depositos'
+    - '&2 /bettereconomy withdraw <player> &f- &aAbre el menu de extración para el jugador'
+    - '&2 /bettereconomy reload &f- &aReload configuration (Restart recommended)'
+    User:
+    - '&2 /bettereconomy main &f- &aAbre el menú principal'
+    - '&2 /bettereconomy deposit &f- &aAbre el menú de depositos'
+    - '&2 /bettereconomy withdraw &f- &aAbre el menú de extracción'
+  Main:
+    No-permission: '&cNo tienes suficientes permisos.'
+    Title: '&8Menú de Dinero'
+    Opened-target: '&6Abriste el menú de dinero para {TARGET}.'
+  Deposit:
+    No-permission: '&cNo tienes suficientes permisos.'
+    No-permission-command: '&cNo tienes suficientes permisos para abrir el menú de deposito
+      con este comando.'
+    Title: '&8Depositar Dinero'
+    Opened-target: '&6Abriste el menú de depósitos para {TARGET}.'
+    Success: '&a${TOTAL_VALUE} añadido a tu cuenta.'
+    Error: '&cAlgo anda mal, recibiste tus items de vuelta. Si el problema persiste 
+      contacta con un administrador.'
+    Error-extra: '&cHay algún error, recibiste los items de vuelta pero algo se tiro en el piso
+       Si el problema persiste contacta con un administrador.'
+  Withdraw:
+    No-permission: '&cNo tienes suficientes permisos para abrir el menú de extracción.'
+    No-permission-command: '&cNo tienes permiso para abrir el menú con este
+      comando.'
+    Title: '&8Retirar Dinero'
+    Opened-target: '&6You opened withdraw GUI for {TARGET}.'
+    Not-funds: '&cNo tienes suficiente dinero para extraer!'
+    Nothing-to-withdraw: '&cDebes seleccionar algo para extraer primero!'
+    Transaction-error: '&cHay un error con esta transacción! Si el problema persiste
+      contacta un administrador.'
+    Success: '&aExtrajiste ${AMOUNT} en items de dinero.'
+    Success-extra: '&aExtrajiste ${AMOUNT} en dinero de items. Un poco fue tirado en
+      el suelo!'
+Options:
+  Debug-mode: false
+  Aliases:
+  - beconomy
+  Money:
+    UUID: e1c1a194-7e86-414f-86bb-42d82a21cfb8
+    Prevent-interaction: true
+    Ignore-money-uuid: false
+  Main:
+    Rows: 3
+    Sounds:
+      Open: CHEST_OPEN
+    Fill-empty:
+      Enabled: true
+      Color: BLACK
+      Custom-model-data: 0
+  Deposit:
+    Sounds:
+      Open: CHEST_OPEN
+    Fill-empty:
+      Color: BLACK
+      Custom-model-data: 0
+  Withdraw:
+    Rows: 3
+    Sounds:
+      Open: CHEST_OPEN
+      Success: EXP_ORB
+    Fill-empty:
+      Enabled: true
+      Color: BLACK
+      Custom-model-data: 0
+  WorldGuard:
+    Warning:
+    - 'Default flag:'
+    - ' This is the default behavior if the flag is not specified BUT you are inside
+      in a WorldGuard region.'
+    - '  true - Entities drop money items.'
+    - '  false - Entities don''t drop money items.'
+    Default-flag-drop: true
+Drops:
+  Entities:
+    Enabled: true
+    Drop-item: false
+  WorldGuard:
+    Warning:
+    - 'Default flag:'
+    - ' This is the default behavior if the flag is not specified BUT you are inside
+      in a WorldGuard region.'
+    - '  true - Entities drop money items.'
+    - '  false - Entities don''t drop money items.'
+    Default-flag-drop: false
+Items:
+  Main-gui:
+    Deposit-gold:
+      Material: GOLD_BLOCK
+      Texture: ewogICJ0aW1lc3RhbXAiIDogMTU5NDQ0NjkyMDI5NiwKICAicHJvZmlsZUlkIiA6ICJlMWMxYTE5NDdlODY0MTRmODZiYjQyZDgyYTIxY2ZiOCIsCiAgInByb2ZpbGVOYW1lIiA6ICJBbG9uc29BbGlhZ2EiLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTY4YWE3NGNjODg1NzgwNjBkMGZlM2JkOTA4YjM0ZjY5ZjEyZTA3ZjFmODljNWRkYzE1ZTZiZjYwZjA0Y2NjNiIKICAgIH0KICB9Cn0=
+      Slot: 11
+      Displayname: '&eDepositar Dinero'
+      Lore: []
+    Withdraw-gold:
+      Material: CUSTOM_HEAD
+      Texture: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmNlYjU0MDEwNGU3YmJmM2QxM2YxNTI1YWNiNzEwZTNhZDM2NWQwY2IxMjkxYWQxZjc0OGY2MDJiNzdkMyJ9fX0=
+      Slot: 15
+      Displayname: '&eExtraer Dinero'
+      Lore: []
+  Withdraw-gui:
+    Withdraw-gold:
+      Material: CUSTOM_HEAD
+      Texture: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmNlYjU0MDEwNGU3YmJmM2QxM2YxNTI1YWNiNzEwZTNhZDM2NWQwY2IxMjkxYWQxZjc0OGY2MDJiNzdkMyJ9fX0=
+      Slot: 22
+      Enough:
+        Displayname: '&eDinero a retirar&7: &6${TOTAL_AMOUNT}'
+        Lore:
+        - '&eBalance&7: &a${BALANCE}'
+        - '&r '
+        - '&bClick izquierdo&e para incrementar 1.'
+        - '&bClick derecho&e para bajar 1.'
+        - '&bShift Click Izquierdo&e para poner en 64.'
+        - '&bShift Click Derecho&e para poner en 0.'
+        - '&bClick del Medio&e para poner un monto.'
+      Not-enough:
+        Displayname: '&eDinero a retirar&7: &c${TOTAL_AMOUNT}'
+        Lore:
+        - '&eBalance&7: &a${BALANCE}'
+        - '&cInsuficientes fondos!'
+        - '&r '
+        - '&bClick izquierdo&e para incrementar 1.'
+        - '&bClick derecho&e para bajar 1.'
+        - '&bShift Click Izquierdo&e para poner en 64.'
+        - '&bShift Click Derecho&e para poner en 0.'
+        - '&bClick del Medio&e para poner un monto.'
+    Money-item:
+      Global-lore: false
+      Lore:
+      - '&eValue&7: &a${VALUE}'
+      - '&r '
+      - '&7Current amount&7: &6{AMOUNT}'
+      - '&7Total value&7: &a${TOTAL_VALUE}'
+  Deposit-gui:
+    Deposit-gold:
+      Material: CUSTOM_HEAD
+      Texture: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmM0ODJlM2I1YzdkNmZiNmIwMDFkZTBlM2JiZmEwOWQyODE3YTY5OGNhYTZlMzNlYjI3NmFlYTA4MTA0NDFmNiJ9fX0=
+      Slot: 22
+      Displayname: '&eConfirmar depósito&7: &6${TOTAL_VALUE}'
+      Lore: []
+Permissions:
+  Main-menu: none
+  Withdraw: none
+  Withdraw-command: none
+  Deposit: none
+  Deposit-command: none
+  Admin: bettereconomy.admin
+Updates:
+  Auto-update-configuration: true
+  Check-updates: true
+  Notify-updates: true
+  Permission: bettereconomy.update
+  Message: '&2[BetterEconomy] &eHay una nueva actualización encontrada! Estás usando la versión
+    {CURRENT}. Descarga la versión {NEW} aquí &c{LINK}'
